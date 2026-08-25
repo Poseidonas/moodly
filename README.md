@@ -4,70 +4,122 @@
 
 **A desktop widget that watches the rhythm you work at, and wears the result.**
 
+It counts *how many* keys and clicks happen. It never sees *which* ones.
+
+[![Download](https://img.shields.io/github/v/release/Poseidonas/moodly?label=download&style=for-the-badge)](https://github.com/Poseidonas/moodly/releases/latest)
+[![Licence](https://img.shields.io/badge/licence-MIT-blue?style=for-the-badge)](LICENSE)
+
 </div>
 
 ---
 
-## What it does
+## The idea
 
-Moodly sits quietly in a corner of your screen. It notices how you are working
-— steadily, in bursts, or not at all — and shows it, without ever knowing what
-you are working on.
+You already know when you have had a good hour. You rarely know *why*, and you
+almost never notice the hour you spent switching between things without
+settling into any of them.
 
-| | |
-| --- | --- |
-| 👀 | learning what your normal looks like |
-| 😌 | working at your usual pace |
-| 🔥 | well above it, and steady with it |
-| 😬 | working in fits and starts |
-| 😤 | hard bursts separated by dead stops |
-| 😴 | away from the machine |
+Moodly sits quietly in a corner of your screen and notices the shape of your
+work — steady, bursty, or absent — without knowing anything about the work
+itself.
+
+| | | |
+| :-: | --- | --- |
+| 👀 | **learning** | working out what your normal looks like |
+| 😌 | **calm** | your usual pace |
+| 🔥 | **god mode** | well above it, and steady with it |
+| 😬 | **stressed** | working in fits and starts |
+| 😤 | **irritated** | hard bursts separated by dead stops |
+| 😴 | **away** | not at the machine |
 
 ## What it counts, and what it cannot see
 
-Moodly counts **how many** keys and clicks happen. It never sees **which** ones.
+This is the part worth reading carefully.
 
-This is not a promise about restraint — it is how the program is built. macOS
-publishes per-event-type counters that any process may read, and those counters
-carry no content. There is no keystroke log because there is nothing to log,
-and the app asks for no accessibility permission at all.
+Moodly reads the counters the operating system already keeps: how many key
+presses, clicks, scrolls and trackpad gestures have occurred. **Those counters
+carry no content.** There is no keystroke log, because there is nothing to log.
 
-Nothing is sent anywhere. Everything stays on your machine, in a plain JSON
-file you can read or delete.
+That is not a promise about restraint — it is the shape of the thing:
+
+- On macOS it uses `CGEventSourceCounterForEventType`, which returns a number
+  and nothing else. The app asks for **no Accessibility permission**, because
+  reading content would require one and it never reads content.
+- Mouse *movement* is deliberately ignored: it is noise, not intent.
+- Nothing is sent anywhere. There is no account, no server, no telemetry.
+- Your settings live in one plain JSON file you can read, edit or delete.
 
 ## The baseline is yours
 
-Nothing is measured against an average. Moodly learns what half an hour of
-*your* ordinary work looks like and reports how far the present sits from that.
-Someone who types all day and someone who mostly reads and clicks each get an
-honest reading of their own rhythm.
+Nothing is compared against an average.
 
-A mood has to hold for twenty-five seconds before it appears, and stays for at
-least two minutes afterwards. Working rhythm is naturally uneven; a widget that
-reacted to every second of it would flicker rather than tell you anything.
+Moodly learns what half an hour of *your* ordinary work looks like, and reports
+how far the present sits from that. The same reading means different things for
+different people, which is the point: someone who types all day and someone who
+mostly reads and clicks each get an honest picture of their own rhythm.
 
-## What it will not claim
+It also refuses to read too much into quiet. Reading a long document produces
+very little input with long gaps in it — mathematically that looks wildly
+uneven, and an earlier version of this widget called it stress. Below half of
+your normal activity, unevenness is ignored: quiet is simply quiet.
 
-It does not know how you feel. It knows how you work, and when that changes.
+## It does not flicker
+
+Working rhythm is naturally uneven. A widget that reacted to every second of it
+would change six times a minute and tell you nothing.
+
+A mood has to hold for **25 seconds** before it is shown, and once shown it
+stays for at least **two minutes**. The exception is walking away, which is
+reported at once — there is nothing to deliberate about.
 
 ## Install
 
-Download the latest release below, open the `.dmg`, and drag Moodly to
-Applications.
+Download the file for your system from the
+[latest release](https://github.com/Poseidonas/moodly/releases/latest):
 
-Windows and Linux builds are planned.
+| System | File |
+| --- | --- |
+| macOS (Apple silicon) | `Moodly_x.y.z_aarch64.dmg` |
+| macOS (Intel) | `Moodly_x.y.z_x64.dmg` |
+| Windows | `Moodly_x.y.z_x64-setup.exe` |
+| Linux | `moodly_x.y.z_amd64.AppImage` or `.deb` |
+
+**macOS:** open the `.dmg` and drag Moodly to Applications. The first launch
+needs right-click → Open, because the build is not signed with a paid Apple
+developer certificate.
+
+**Windows:** run the installer. SmartScreen may warn about an unknown
+publisher, for the same reason.
 
 ## Settings
 
 Right-click the widget, or use the menu bar icon:
 
-- launch at login
-- which display and corner it sits in, and how far from the edges
-- how faint it goes when nothing notable is happening
-- language — Ελληνικά or English
+- **launch at login** — starts quietly when you sign in
+- **show in the Dock** — off by default; it lives in the menu bar instead
+- **display and corner** — which screen, which corner, how far from the edges
+- **opacity when quiet** — how faint it goes when nothing notable is happening
+- **language** — Ελληνικά or English
 
-Drag it anywhere and it stays there, across restarts. If that display is later
-disconnected, it returns to its corner rather than sitting off-screen.
+Drag the widget anywhere and it stays there, across restarts. If that display
+is later disconnected, it returns to its corner rather than sitting off-screen
+where you cannot reach it.
+
+## What it will not claim
+
+It does not know how you feel.
+
+Typing fast can mean flow or panic; typing little can mean thinking or
+giving up. No counter can tell those apart, and a program that says otherwise
+is guessing at you.
+
+What Moodly can honestly say is how you are working, and when that changes —
+which is the part you can actually act on.
+
+## Built with
+
+[Tauri](https://tauri.app) and Rust, so the whole thing is a few megabytes and
+stays out of the way while it runs.
 
 ## Licence
 
