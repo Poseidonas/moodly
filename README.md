@@ -8,9 +8,11 @@ It counts *how many* keys and clicks happen. It never sees *which* ones.
 
 <br />
 
-### [⬇  Download Moodly](https://github.com/Poseidonas/moodly/releases/latest)
+[![Download for macOS](https://img.shields.io/badge/Download-macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/Poseidonas/moodly/releases/latest)
+[![Download for Windows](https://img.shields.io/badge/Download-Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Poseidonas/moodly/releases/latest)
+[![Download for Linux](https://img.shields.io/badge/Download-Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/Poseidonas/moodly/releases/latest)
 
-<sub>macOS · Windows · Linux — free, no account, nothing to sign up for</sub>
+<sub>Free · no account · nothing leaves your machine</sub>
 
 <br />
 
@@ -36,6 +38,7 @@ itself.
 | :-: | --- | --- |
 | 👀 | **learning** | working out what your normal looks like |
 | 😌 | **calm** | your usual pace |
+| 🤔 | **working it out** | present but slow, with real gaps — the shape of difficulty |
 | 🔥 | **god mode** | well above it, and steady with it |
 | 😬 | **stressed** | working in fits and starts |
 | 😤 | **irritated** | hard bursts separated by dead stops |
@@ -65,13 +68,22 @@ Those two numbers decide the mood:
 | well above normal, and even with it | **god mode** |
 | above normal, but in bursts with dead stops between | **irritated** |
 | around normal, arriving unevenly | **stressed** |
-| below half your normal | **calm** — quiet is simply quiet |
+| below half your normal, in regular light touches with gaps | **working it out** |
+| below half your normal, steadily | **calm** |
 | nothing for ninety seconds | **away** |
 
-That fourth line matters more than it looks. Reading a long document produces
-very little input with long gaps in it, which is mathematically *wildly* uneven
-— an early version of this widget called that stress. Below half your normal
-activity, unevenness is ignored entirely.
+Those last two lines matter more than they look.
+
+Reading a long document produces very little input with long gaps in it, which
+is mathematically *wildly* uneven — an early version of this widget called that
+stress. Below half your normal activity, unevenness is ignored entirely.
+
+But quiet is not one thing. Cognitive-load research describes what happens when
+a task gets hard: typing slows, clicking drops, pauses lengthen — and the person
+is still very much there. Calling that "calm" would be reading ease into
+difficulty. So the quiet is split by how the gaps fall over half a minute:
+regular light contact with real gaps between is someone working something out;
+steady low input is someone at ease; nothing at all is an empty chair.
 
 ### It does not flicker
 
