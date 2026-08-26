@@ -84,12 +84,13 @@ Reading a long document produces very little input with long gaps in it, which
 is mathematically *wildly* uneven — an early version of this widget called that
 stress. Below half your normal activity, unevenness is ignored entirely.
 
-But quiet is not one thing. Cognitive-load research describes what happens when
-a task gets hard: typing slows, clicking drops, pauses lengthen — and the person
-is still very much there. Calling that "calm" would be reading ease into
-difficulty. So the quiet is split by how the gaps fall over half a minute:
+But quiet is not one thing. Research on cognitive load describes what happens
+when a task gets hard: typing slows, clicking drops, pauses lengthen — and the
+person is still very much there. Calling that "calm" would be reading ease
+into difficulty. So the quiet is split by how the gaps fall over half a minute:
 regular light contact with real gaps between is someone working something out;
 steady low input is someone at ease; nothing at all is an empty chair.
+[Where that comes from](#what-it-rests-on) is set out below.
 
 ### It does not flicker
 
@@ -109,6 +110,45 @@ The same reading means different things for different people, which is the
 point: someone who types all day and someone who mostly reads and clicks each
 get an honest picture of their own rhythm. It also uses the median rather than
 the mean, so one furious afternoon does not redefine your normal.
+
+---
+
+## What it rests on
+
+The moods are not invented. Each transition in Moodly follows a direction that
+published work on keyboard and mouse behaviour has already observed — with one
+important limit, stated below.
+
+- **The rhythm of typing carries emotional state.** In a field study with
+  self-reported emotions, models built on nothing but keystroke timing told
+  apart states such as focus, frustration and distraction well above chance.
+  — Epp, Lippold & Mandryk, [*Identifying emotional states using keystroke
+  dynamics*](https://dl.acm.org/doi/10.1145/1978942.1979046), CHI 2011.
+- **Stress shows in the intervals between keys and in where the pauses fall**,
+  not only in what is typed. — Vizer, Zhou & Sears, [*Automated stress
+  detection using keystroke and linguistic features*](https://www.sciencedirect.com/science/article/abs/pii/S1071581909000937),
+  International Journal of Human-Computer Studies, 2009.
+- **Under pressure people press harder and hold the mouse more** — the body
+  leans into the machine. — Hernandez, Paredes, Roseway & Czerwinski, [*Under
+  pressure: sensing stress of computer users*](https://www.microsoft.com/en-us/research/publication/under-pressure-sensing-stress-of-computer-users/),
+  CHI 2014.
+- **When a task gets harder, keystroke speed and clicks go down and the mouse
+  sits idle for longer.** This is the finding behind *working it out*: a quiet
+  that is effort, not ease. — Lim, Ayesh & Stacey, [*Using mouse and keyboard
+  dynamics to detect cognitive stress during mental arithmetic*](https://link.springer.com/chapter/10.1007/978-3-319-14654-6_21),
+  2014.
+
+The limit: those studies had richer data than Moodly allows itself — key
+identities, timings per key, pressure, mouse paths. Moodly keeps only counts
+per second, by design, so it borrows the *direction* of each effect rather than
+any model trained on it. The thresholds are then set against your own
+baseline, not against a population.
+
+That makes this a working model, not a validated instrument, and it is treated
+as one. The intention is to keep bringing published evidence into it — on
+pause structure, on individual baselines, on what counts alone can and cannot
+tell apart — and to keep the model open here, in plain language, so that anyone
+can see what a mood is made of and argue with it.
 
 ---
 
