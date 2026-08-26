@@ -46,7 +46,9 @@ itself.
 
 Any of those can wear an emoji of your choosing. Rest the pointer on the widget
 and a line for the day appears beneath the character — the same line all day,
-a different one tomorrow, in Greek or English.
+a different one tomorrow, in Greek or English. Some are ours; some are from
+people who thought about work and time long before anyone measured it, and
+those carry their author and reference.
 
 ---
 
@@ -268,6 +270,10 @@ which is the part you can actually do something about.
 ---
 
 ## Changelog
+
+**0.3.0** — fifty lines from Marcus Aurelius, Epictetus, Heraclitus, Epicurus,
+Democritus and Seneca join the line of the day, in Greek and English, each
+checked against the full text of its source and shown with its reference.
 
 **0.2.0** — reports by week and month; share badge; line of the day; your own
 emoji per mood; theme; size, glow and glass controls; signed in-app updates;
