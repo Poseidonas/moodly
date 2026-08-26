@@ -44,6 +44,10 @@ itself.
 | 😤 | **irritated** | hard bursts separated by dead stops |
 | 😴 | **away** | not at the machine |
 
+Any of those can wear an emoji of your choosing. Rest the pointer on the widget
+and a line for the day appears beneath the character — the same line all day,
+a different one tomorrow, in Greek or English.
+
 ---
 
 ## How it reads you
@@ -124,8 +128,9 @@ Concretely:
   require one on macOS. Moodly never asks, because it never reads.
 - **Mouse movement is ignored** on purpose: it is noise, not intent.
 - **Nothing is transmitted.** No account, no server, no telemetry, no analytics.
-  The app makes exactly one network request in its life, and only when *you*
-  press "Check" for updates: a call to GitHub's public releases API.
+  The only network the app ever touches is GitHub's public releases API, and
+  only when *you* press "Check" for updates — and, if you then press "Update
+  now", the download of the new version itself.
 - **Your settings are one plain JSON file** in your own user folder. Open it,
   edit it, delete it.
 
@@ -215,12 +220,37 @@ Right-click the widget, or use the menu bar icon:
 - **launch at login** — starts quietly when you sign in
 - **show in the Dock** — off by default; it lives in the menu bar instead
 - **display and corner** — which screen, which corner, how far from the edges
-- **opacity when quiet** — how faint it goes when nothing notable is happening
 - **language** — Ελληνικά or English
+- **theme** — system, light or dark
+- **size, glow and glass** — the widget's diameter, how far the glow reaches
+  and how solid it is, its colour (each mood's own, or one you fix), and the
+  tint and opacity of the glass inside the circle
+- **opacity when quiet** — how faint it goes when nothing notable is happening
+- **line of the day** — on or off
+- **your emoji** — any emoji for any mood, from a searchable picker
 
 Drag it anywhere and it stays there, across restarts. If that display is later
 disconnected it returns to its corner, rather than sitting off-screen where you
 cannot reach it.
+
+## Reports
+
+The settings window shows how long each mood lasted over the last week or
+month, in hours and minutes, with a bar for each day. Only *changes* of mood
+are written down — a day of work is a few dozen lines — and anything older
+than twelve months is dropped.
+
+**Share** saves a 1080 × 1080 image to your Desktop: the period's top mood on
+a large emoji, the runners-up beneath it. Nothing is posted anywhere; it is a
+file, and what happens to it is up to you.
+
+## Updates
+
+**Check** in the About panel asks GitHub whether a newer version exists.
+**Update now** downloads it, verifies its signature against the public key
+built into the app — a package not signed with the matching private key is
+refused — installs it, and restarts. Nothing is downloaded until you press the
+button.
 
 ---
 
@@ -234,6 +264,19 @@ guessing at you.
 
 What Moodly can honestly say is how you are working, and when that changes —
 which is the part you can actually do something about.
+
+---
+
+## Changelog
+
+**0.2.0** — reports by week and month; share badge; line of the day; your own
+emoji per mood; theme; size, glow and glass controls; signed in-app updates;
+app and menu bar icons. Fixes to the line-of-the-day hover, the emoji picker
+and the circle's glass in light mode.
+
+**0.1.0** — first release.
+
+The full list is in each [release](https://github.com/Poseidonas/moodly/releases).
 
 ---
 
