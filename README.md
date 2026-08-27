@@ -156,9 +156,11 @@ can see what a mood is made of and argue with it.
 
 This is the part worth reading carefully.
 
-**Moodly reads counters the operating system already keeps.** On macOS that is
-`CGEventSourceCounterForEventType` — a function that returns *a number* and
-nothing else: how many key presses have occurred since the machine started.
+**Moodly reads counters the operating system already keeps, or makes them the
+same way.** On macOS that is `CGEventSourceCounterForEventType` — a function
+that returns *a number* and nothing else: how many key presses have occurred
+since the machine started. On Windows it registers for raw input and counts
+arrivals, discarding each event once its kind is known.
 
 **There is no keystroke log, because there is nothing to log.** The interface
 carries no key codes, no characters, no window titles, no clipboard. Not "we
@@ -245,13 +247,15 @@ will warn about an unknown publisher.
 
 ### Where it works today
 
-The counters Moodly is built on are a macOS interface, so **the reading works
-fully on macOS only**. The Windows and Linux builds install and run, but cannot
-count activity yet — and say so plainly rather than showing a mood they have no
-basis for.
+| System | How it counts |
+| --- | --- |
+| macOS | `CGEventSourceCounterForEventType` — per-event-type totals the system already keeps |
+| Windows | Raw input: a hidden window is told about each keyboard and mouse event, looks only at its kind — key down, button, wheel — and drops it. No hooks, no Accessibility permission |
+| Linux | Installs and runs, but cannot count yet, and says so plainly rather than showing a mood it has no basis for |
 
-Windows support means counting raw input arrivals and discarding the payload,
-which keeps exactly the same guarantee. That work is ahead.
+On Windows the key code is never read: the event is classified from its
+flags and discarded in the same function. There is nothing to log because
+nothing is kept.
 
 ---
 
@@ -310,6 +314,9 @@ which is the part you can actually do something about.
 ---
 
 ## Changelog
+
+**0.4.0** — Windows counts: raw input arrivals, classified and dropped, no
+hooks. The widget no longer resizes on hover outside macOS.
 
 **0.3.0** — fifty lines from Marcus Aurelius, Epictetus, Heraclitus, Epicurus,
 Democritus and Seneca join the line of the day, in Greek and English, each
